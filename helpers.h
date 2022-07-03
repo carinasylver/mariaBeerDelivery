@@ -25,41 +25,40 @@ int menuPrincipal(){
     limpaTela();
     do
     {
-    printf("\n\n                   *  MARIA DELIVERY *                                   \n"); 
-    printf("'============================================================================='\n");
-    printf("||                            ___                                            ||\n");
-    printf("||                          .'   '.                                          ||\n");
-    printf("||                         /       \\          oOoOo                          ||\n");
-    printf("||                        |         |       ,==|||||                         ||\n");
-    printf("||                         \\      /       _ || |||||                         ||\n");
-    printf("||                          '.___.'    _.-'^|| |||||                         ||\n");
-    printf("||                        __/_______.-'     '==HHHHH                         ||\n");
-    printf("||                   _.-'` /                   """"""                              ||\n");
-    printf("||                -'      /   oOoOo                                          ||\n");
-    printf("||                `-._   / ,==|||||                                          ||\n");
-    printf("||                    '-/._|| |||||                                          ||\n");
-    printf("||                     /  ^|| |||||                                          ||\n");
-    printf("||                    /    '==HHHHH                                          ||\n");
-    printf("||                   /________""""""                                               ||\n");
-    printf("||                   `\\       `\\                                             ||\n");
-    printf("||                     \\        `\\   /                                       ||\n");
-    printf("||                      \\         `\\/                                        ||\n");
-    printf("||                      /                                                    ||\n");
-    printf("||                     /                                                     ||\n");
-    printf("||                    /_____                                                 ||\n");
-    printf("||                                                                           ||\n");
-    printf("||---------------------------------------------------------------------------||\n");
-    printf("||                    SELECIONE UMA OPCAO DO MENU                            ||\n");
-    printf("||---------------------------------------------------------------------------||\n");
-    printf("||   1 - CARDAPIO DE CERVEJAS                                                ||\n");   
-    printf("||---------------------------------------------------------------------------||\n");
-    printf("||   2 - CADASTRE-SE                                                         ||\n"); 
-    printf("||---------------------------------------------------------------------------||\n"); 
-    printf("||   3 - CONTATO                                                             ||\n");
-    printf("||---------------------------------------------------------------------------||\n");      
-    printf("||   0 - SAIR                                                                ||\n"); 
-    printf("'============================================================================'\n");
-    printf("-> ");  
+    printf("\n\n              *  MARIA DELIVERY * \n"); 
+    printf("'==========================================================='\n");
+    printf("||                        ___                              ||\n");
+    printf("||                      .'   '.                            ||\n");
+    printf("||                     /       \\          oOoOo            ||\n");
+    printf("||                    |         |       ,==|||||           ||\n");
+    printf("||                     \\       /      _ || |||||           ||\n");
+    printf("||                      '.___.'    _.-'^|| |||||           ||\n");
+    printf("||                    __/_______.-'     '==HHHHH           ||\n");
+    printf("||               _.-'` /                                   ||\n");
+    printf("||            -'      /   oOoOo                            ||\n");
+    printf("||            `-._   / ,==|||||                            ||\n");
+    printf("||                '-/._|| |||||                            ||\n");
+    printf("||                 /  ^|| |||||                            ||\n");
+    printf("||                /    '==HHHHH                            ||\n");
+    printf("||               /________ '                               ||\n");
+    printf("||               `\\       `\\                               ||\n");
+    printf("||                 \\        `\\   /                         ||\n");
+    printf("||                  \\         `\\/                          ||\n");
+    printf("||                  /                                      ||\n");
+    printf("||                 /                                       ||\n");
+    printf("||                /_____                                   ||\n");   
+    printf("||---------------------------------------------------------||\n");
+    printf("||           SELECIONE UMA OPCAO DO MENU                   ||\n");
+    printf("||---------------------------------------------------------||\n");
+    printf("||   1 - CARDAPIO DE CERVEJAS                              ||\n");   
+    printf("||---------------------------------------------------------||\n");
+    printf("||   2 - CADASTRE-SE                                       ||\n"); 
+    printf("||---------------------------------------------------------||\n"); 
+    printf("||   3 - CONTATO                                           ||\n");
+    printf("||---------------------------------------------------------||\n");      
+    printf("||   0 - SAIR                                              ||\n"); 
+    printf("'==========================================================='\n");
+    printf("-> ");
     scanf("%d", &cod); 
     } while (cod < 0 || cod > 3);
     limpaTela();
@@ -69,15 +68,15 @@ int menuBeer()
 {
     int cod;
     printf("\n                * AS CONSAGRADAS *     \n");
-    printf("||===========================================================||\n");
-    printf("||-----------------------------------------------------------||\n");
-    printf("|| BRAHMA |- SKOL |- BUDWEISER |- ANTARTICA |- ORIGINAL      ||\n");
-    printf("|| ----------------------------------------------------------||\n\n");
-    printf("\n                * AS PRESTIGIADAS *                        \n");
-    printf("||===========================================================||\n");
-    printf("||-----------------------------------------------------------||\n");
-    printf("|| STELLA ARTOIS |- BECKS |- CORONA |- BOHEMIA |- COLORADO   ||\n");
-    printf("||-----------------------------------------------------------||\n\n");
+    printf(".===========================================================.\n");
+    printf("||---------------------------------------------------------||\n");
+    printf("|| BRAHMA |- SKOL |- BUDWEISER |- ANTARTICA |- ORIGINAL    ||\n");
+    printf(".-----------------------------------------------------------.\n\n");
+    printf("\n                * AS PRESTIGIADAS *                      \n");
+    printf(".===========================================================.\n");
+    printf("||---------------------------------------------------------||\n");
+    printf("|| STELLA ARTOIS |- BECKS |- CORONA |- BOHEMIA |- COLORADO ||\n");
+    printf(".-----------------------------------------------------------.\n\n");
             
     printf("OPCAO: |1|- AS PRESTIGIADAS   |2|- AS CONSAGRADAS\n-> "); 
     scanf("%d", &cod);
@@ -93,9 +92,9 @@ int menuBeer()
 void codigoNaoEncontrado()
 {
      limpaTela();
-     printf("|----------------------------------------------------|\n");
+     printf(".----------------------------------------------------.\n");
      printf("| CODIGO NAO ENCONTRADO!! INFORME UM CODIGO VALIDO   |\n");
-     printf("|----------------------------------------------------|\n");
+     printf(".----------------------------------------------------.\n");
 }
 void cadastroCliente()
 {    
@@ -143,16 +142,16 @@ void cadastroCliente()
     limpaTela();
 
     printf("\n\n");
-    printf(".==========================================.\n");      
-    printf("|      CADASTRO REALIZADO COM SUCESSO!!    |\n");
-    printf(".==========================================.\n");  //grid 44      
-    printf("|NOME: %-35s |\n", client.nome); 
-    printf("|EMAIL: %-34s |\n", client.email);       
-    printf("|SENHA: %-34s |\n", client.senha);        
-    printf("|CPF: %-36s |\n", client.cpf);        
-    printf("|CELULAR: %-32s |\n", client.telefone);        
-    printf("|IDADE: %-34d |\n", client.idade);
-    estilo(45,'-'); 
+    printf(".=======================================.\n");      
+    printf("|    CADASTRO REALIZADO COM SUCESSO!!   |\n");
+    printf(".=======================================.\n");  //grid 44      
+    printf("|NOME: %-33s|\n", client.nome); 
+    printf("|EMAIL: %-32s|\n", client.email);       
+    printf("|SENHA: %-32s|\n", client.senha);        
+    printf("|CPF: %-34s|\n", client.cpf);        
+    printf("|CELULAR: %-30s|\n", client.telefone);        
+    printf("|IDADE: %-32d|\n", client.idade);
+    estilo(42,'-'); 
     sleep(10);
     limpaTela();         
 }
