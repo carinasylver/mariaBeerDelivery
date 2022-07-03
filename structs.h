@@ -1,26 +1,44 @@
-typedef struct Client {    
-    char nome[50];
-    char email[50];
-    char senha[10];
-    char cpf[15];  
-    char telefone[15];    
-    char idade[4];
-} Client;
+#ifndef helpers_H
+#define helpers_H
 
-typedef struct Endereco {    
-    char descricao[12]; 
+#define BEERMENU 1
+#define CADASTRO 2
+#define CONTATO 3
+#define ASCONSAGRADAS 1
+#define ASPRESTIGIADAS 2
+
+typedef struct cliente {    
+    char nome[30];
     char cep[12];
     char endereco[50];
-    char numero[5];
+    int numero;
     char bairro[50];
-} Endereco;
+    char email[30];
+    char senha[15];
+    char cpf[15];  
+    char telefone[15];    
+    int idade;
+    char descricao[12];     
+} Client;
 
-typedef struct Pagamento {
+typedef struct pagamento {
     char numCartao[20];
     char nomeCartao[30];
-    char cpf[15];
-    char tel[15];
+    Client info; 
     char dataValidade[10];
-    char codSeguranca[5];
-    char parcelas[5]; 
+    int codSeguranca;
+    int parcelas; 
 } Pagamento;
+
+//PROTOTIPOS DAS FUNCOES
+int menuPrincipal();
+int menuBeer();
+void codigoNaoEncontrado();
+void login();
+void cadastroCliente();
+void cartaoCredito();
+void identificacaoEntrega();
+void pedidoRealizado();
+void contatoBeerDelivery();
+
+#endif
