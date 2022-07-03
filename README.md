@@ -1,7 +1,10 @@
 # mariaBeerDelivery
 Projeto de Conclusão da Disciplina de Lógica de Programação - 1º Semestre- IFSUL
 
-<h2>Delivery de cervejas<h2>
+
+<h3>Clique no link e execute o código -> https://replit.com/@carinagsilveira/mariaBeerDelivery</h3>
+
+<h2>Delivery de cervejas</h2>
 
 ![1](https://user-images.githubusercontent.com/62727932/135001763-bca31211-4635-41e4-a34a-d8871617c021.png)
 ![LP-proj-conclusao](https://user-images.githubusercontent.com/62727932/169870502-7eb10981-2ee9-4448-b3e1-b285abf50f68.png)
