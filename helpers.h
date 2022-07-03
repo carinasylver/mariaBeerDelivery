@@ -1,11 +1,30 @@
-void estilo(int numTracejado, char tracejado){   
-    for (int i=1; i < numTracejado; i++ ){       
-        printf("%c", tracejado);
+void estilo(int qtdCaracteres, char caractere){   
+    for (int i=1; i < qtdCaracteres; i++ )
+    {       
+        printf("%c", caractere);
     }
     printf("\n");
 }
-
-void menuBeer(){
+// limpa a tela no windows/linux
+void limpaTela()
+{
+    #ifdef WINDOWS
+        system("cls"); 
+    #else
+        system("clear"); 
+    #endif
+}
+//limpa o buffer do teclado
+void limparBuffer() 
+{
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF) { }
+}
+int menuPrincipal(){
+    int cod;
+    limpaTela();
+    do
+    {
     printf("\n\n                   *  MARIA DELIVERY *                                   \n"); 
     printf("'============================================================================='\n");
     printf("||                            ___                                            ||\n");
@@ -27,7 +46,7 @@ void menuBeer(){
     printf("||                      \\         `\\/                                        ||\n");
     printf("||                      /                                                    ||\n");
     printf("||                     /                                                     ||\n");
-    printf("||               cgs  /_____                                                 ||\n");
+    printf("||                    /_____                                                 ||\n");
     printf("||                                                                           ||\n");
     printf("||---------------------------------------------------------------------------||\n");
     printf("||                    SELECIONE UMA OPCAO DO MENU                            ||\n");
@@ -39,12 +58,49 @@ void menuBeer(){
     printf("||   3 - CONTATO                                                             ||\n");
     printf("||---------------------------------------------------------------------------||\n");      
     printf("||   0 - SAIR                                                                ||\n"); 
-    printf("'============================================================================'\n");         
+    printf("'============================================================================'\n");
+    printf("-> ");  
+    scanf("%d", &cod); 
+    } while (cod < 0 || cod > 3);
+    limpaTela();
+    return cod;
 }
-void cadastroCliente();
-void cadastroCliente(){    
-    Client client; 
-
+int menuBeer()
+{
+    int cod;
+    printf("\n                * AS CONSAGRADAS *     \n");
+    printf("||===========================================================||\n");
+    printf("||-----------------------------------------------------------||\n");
+    printf("|| BRAHMA |- SKOL |- BUDWEISER |- ANTARTICA |- ORIGINAL      ||\n");
+    printf("|| ----------------------------------------------------------||\n\n");
+    printf("\n                * AS PRESTIGIADAS *                        \n");
+    printf("||===========================================================||\n");
+    printf("||-----------------------------------------------------------||\n");
+    printf("|| STELLA ARTOIS |- BECKS |- CORONA |- BOHEMIA |- COLORADO   ||\n");
+    printf("||-----------------------------------------------------------||\n\n");
+            
+    printf("OPCAO: |1|- AS PRESTIGIADAS   |2|- AS CONSAGRADAS\n-> "); 
+    scanf("%d", &cod);
+    system("clear");
+    while(cod < 1 || cod > 2)
+    {
+        codigoNaoEncontrado();
+        printf("OPCAO: |1|- AS PRESTIGIADAS   |2|- AS CONSAGRADAS\n-> ");   
+        scanf("%d", &cod);
+    }
+    return cod;
+}
+void codigoNaoEncontrado()
+{
+     limpaTela();
+     printf("|----------------------------------------------------|\n");
+     printf("| CODIGO NAO ENCONTRADO!! INFORME UM CODIGO VALIDO   |\n");
+     printf("|----------------------------------------------------|\n");
+}
+void cadastroCliente()
+{    
+    Client client;
+    int op;
     printf("\n\n");
     printf(".==========================================.\n");      
     printf("|         * MARIA DELIVERY *               |\n");
@@ -66,26 +122,25 @@ void cadastroCliente(){
     printf("| sua idade deve ser maior que 18 anos     |\n");
     estilo(44,'-'); 
 
-    setbuf(stdin, NULL);
+    limparBuffer();    
     printf("NOME: " );
     fgets(client.nome, sizeof(client.nome), stdin);
-    strtok(client.nome, "\n");
+    client.nome[strlen(client.nome) -1] = '\0';
     printf("EMAIL: ");
     fgets(client.email, sizeof(client.email), stdin);
-    strtok(client.email, "\n");
+    client.email[strlen(client.email) -1] = '\0';
     printf("SENHA: ");
     fgets(client.senha, sizeof(client.senha), stdin);
-    strtok(client.senha, "\n");
-    printf("CPF: ");
+    client.senha[strlen(client.senha) -1] = '\0';   
+    printf("CPF: ");   
     fgets(client.cpf, sizeof(client.cpf), stdin);
-    strtok(client.cpf, "\n");
-    printf("CELULAR: ");
+    client.cpf[strlen(client.cpf) -1] = '\0';   
+    printf("CELULAR: "); 
     fgets(client.telefone, sizeof(client.telefone), stdin);
-    strtok(client.telefone, "\n");
-    printf("IDADE: ");
-    fgets(client.idade, sizeof(client.idade), stdin);
-    strtok(client.idade, "\n");
-    system("cls");
+    client.telefone[strlen(client.telefone) -1] = '\0'; 
+    printf("IDADE: ");   
+    scanf("%d", &client.idade);  
+    limpaTela();
 
     printf("\n\n");
     printf(".==========================================.\n");      
@@ -96,13 +151,36 @@ void cadastroCliente(){
     printf("|SENHA: %-34s |\n", client.senha);        
     printf("|CPF: %-36s |\n", client.cpf);        
     printf("|CELULAR: %-32s |\n", client.telefone);        
-    printf("|IDADE: %-34s |\n", client.idade);
-    estilo(45,'-');         
-    system("pause");
-  
+    printf("|IDADE: %-34d |\n", client.idade);
+    estilo(45,'-'); 
+    sleep(10);
+    limpaTela();         
 }
-void identificacaoEntrega(){
-    
+void login()
+{
+    Client client;
+
+    estilo(44,'-');  
+    printf("|         ENTRAR PARA CONTINUAR           |\n"); 
+    estilo(44,'-'); 
+    printf("| EMAIL:  digite o email                  |\n");
+    estilo(44,'-');
+    estilo(44,'-');  
+    printf("| SENHA:                                  |\n"); 
+    printf("| (a senha deve ter 8 ou mais caracteres) |\n");
+    estilo(44,'-');
+    limparBuffer();
+    printf("EMAIL: ");   
+    fgets(client.email, sizeof(client.email), stdin); 
+    client.email[strlen(client.email) -1] = '\0';            
+    printf("SENHA: ");
+    client.senha[strlen(client.senha) -1] = '\0';   
+    fgets(client.senha, sizeof(client.senha), stdin);     
+    limpaTela();
+}
+void identificacaoEntrega()
+{
+    Client client;
 
     printf(".=========================================.\n");
     printf("|   ** IDENTIFICACAO PARA ENTREGA         |\n"); 
@@ -120,10 +198,38 @@ void identificacaoEntrega(){
     estilo(44,'-');                          
     estilo(44,'-');             
     printf("| BAIRRO:    | digite o bairro            |\n");           
-    estilo(44,'-');                                       
-     
+    estilo(44,'-'); 
+    
+    limparBuffer();
+    printf("\nDESCRICAO: ");
+    fgets(client.descricao, sizeof(client.descricao), stdin);
+    client.descricao[strlen(client.descricao) -1] = '\0';   
+    printf("CEP: ");
+    fgets(client.cep, sizeof(client.cep), stdin);
+    client.cep[strlen(client.cep) -1] = '\0';  
+    printf("ENDERECO: ");
+    fgets(client.endereco, sizeof(client.endereco), stdin);
+    client.endereco[strlen(client.endereco) -1] = '\0';
+    printf("NUMERO: ");
+    scanf("%d", &client.numero);
+    limparBuffer();        
+    printf("BAIRRO: ");               
+    fgets(client.bairro, sizeof(client.bairro), stdin);
+    client.bairro[strlen(client.bairro) -1] = '\0'; 
+    limpaTela();
+    printf("\n\n");
+    estilo(47,'-');
+    printf("| DESCRICAO: %-31s |\n", client.descricao);  
+    printf("| CEP: %-37s |\n", client.cep);                
+    printf("| ENDERECO: %-32s |\n", client.endereco);               
+    printf("| NUMERO: %-34d |\n", client.numero);                
+    printf("| BAIRRO: %-34s |\n", client.bairro);  
+    estilo(47,'-');         
 }
-void pagamento(){     
+void cartaoCredito() 
+{
+    Pagamento pagamento; 
+      
     printf("\n");
     printf(".==========================================.\n");      
     printf("|        ** PAGAMENTO **                   |\n");
@@ -149,33 +255,40 @@ void pagamento(){
     estilo(44,'-');                        
     printf("| PARCELAR EM: xx                          |\n");           
     estilo(44,'-');
+    limparBuffer();
+    printf("NUMERO DO CARTAO: ");
+    fgets(pagamento.numCartao, sizeof(pagamento.numCartao),stdin);
+    printf("NOME IMPRESSO CARTAO: ");
+    fgets(pagamento.nomeCartao, sizeof(pagamento.nomeCartao),stdin);
+    printf("CPF DO TITULAR: ");
+    fgets(pagamento.info.cpf, sizeof(pagamento.info.cpf),stdin);
+    printf("TELEFONE DO TITULAR: "); 
+    fgets(pagamento.info.telefone, sizeof(pagamento.info.telefone),stdin);
+    printf("DATA DE VALIDADE: ");            
+    fgets(pagamento.dataValidade, sizeof(pagamento.dataValidade),stdin); 
+    printf("COD. SEGURANCA: "); 
+    scanf("%d", &pagamento.codSeguranca); 
+    printf("PARCELAR EM: "); 
+    scanf("%d", &pagamento.parcelas); 
+    limpaTela();  
 }
-void bebidaIndisponivel(){
-    system("cls");
-
-    printf("\n\n");                
+void bebidaIndisponivel()
+{
+    printf("\n");                
     estilo(33,'-'); 
     printf("| INDISPONIVEL!!!              |\n"); 
     printf("| SELECIONE OUTRA BEBIDA       |\n"); 
-    estilo(33,'-');
-
-    system("pause");
-    system("cls"); 
+    estilo(33,'-'); 
 }
-
-void quantidadeInvalida(){
-    system("cls"); 
-
-    printf("\n\n");                
+void quantidadeInvalida()
+{
+    printf("\n");                
     estilo(42,'-'); 
     printf("| QUANTIDADE SELECIONADA EH INVALIDA!!! |\n"); 
     estilo(42,'-');
-    
-    system("pause");
-    system("cls"); 
 }
-
-void pedidoRealizado(){
+void pedidoRealizado()
+{
     estilo(47,'-');
     printf("|         OBRIGADA PELA COMPRA!              |\n");
     printf("|         BEBA COM MODERACAO                 |\n");
@@ -188,10 +301,11 @@ void pedidoRealizado(){
     printf("|            '=]): .)  ([                    |\n");
     printf("|              |:: '    |                    |\n");
     printf("|               ~~----~~                     |\n");
-    estilo(47,'-');  
+    estilo(47,'-'); 
 }
-void compraCancelada(){ 
-    system ("cls");
+void compraCancelada()
+{ 
+    limpaTela();
     printf("\n\n");
     estilo(61,'-');      
     printf("|                                                          |\n");
@@ -199,13 +313,13 @@ void compraCancelada(){
     printf("|                                                          |\n");
     estilo(61,'-');  
 }
-void contatoBeerDelivery(){
-    system("cls");
+void contatoBeerDelivery()
+{
+    limpaTela();
     printf("\n\n");            
     estilo(69,'-');
     printf("| CGS COMMERCE COMERCIO DE BEBIDAS LTDA - CNPJ: 11.111.111/0001-11 |\n");
-    printf("| Rua Alberto Santanna, 1532 - CEP: 11111-111                      |\n");      
-    printf("| Pelotas/RS                                                       |\n");
-    estilo(69,'-');
-              
+    printf("| Rua Alberto Santanna, 1111 - CEP: 11111-111                      |\n");      
+    printf("| Theed/RS                                                         |\n");
+    estilo(69,'-');              
 }
